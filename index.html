@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Татьяна Антипова - внешний финансовый директор для собственников бизнеса. Управленческий учет, Cash Flow, бюджетирование, финансовая диагностика, недвижимость и активы." />
+  <meta name="keywords" content="финансовый директор на аутсорсинге, внешний CFO, управленческий учет, БДР, БДДС, Cash Flow, финансовая диагностика, недвижимость" />
+  <meta name="author" content="Татьяна Антипова" />
+  <meta property="og:title" content="Татьяна Антипова - внешний финансовый директор" />
+  <meta property="og:description" content="Финансовая система для собственника: прибыль, cash flow, активы и риски под управлением." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tsantipova.github.io/" />
+  <title>Татьяна Антипова | Внешний финансовый директор</title>
+  <style>
+    :root {
+      --ink: #171a20;
+      --ink-2: #252a34;
+      --paper: #f5f1ea;
+      --white: #ffffff;
+      --gold: #bd9958;
+      --gold-soft: #d8bd8a;
+      --sage: #526457;
+      --muted: #6d6c68;
+      --line: #ddd4c6;
+      --radius: 28px;
+      --shadow: 0 20px 55px rgba(30, 28, 24, .09);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+
+    .nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 50;
+      background: rgba(23, 26, 32, .88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav-inner { height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { color: #fff; font-weight: 750; letter-spacing: -.02em; }
+    .brand span { color: var(--gold-soft); }
+    .nav-links { display: flex; align-items: center; gap: 24px; color: rgba(255,255,255,.78); font-size: 14px; }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta { padding: 11px 18px; border: 1px solid rgba(255,255,255,.25); border-radius: 999px; color: #fff; }
+
+    .hero {
+      min-height: 760px;
+      padding: 150px 0 90px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 78% 18%, rgba(189,153,88,.28), transparent 32%),
+        radial-gradient(circle at 15% 88%, rgba(82,100,87,.43), transparent 34%),
+        var(--ink);
+      overflow: hidden;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.18fr .82fr; gap: 68px; align-items: center; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--gold-soft); text-transform: uppercase; letter-spacing: .18em; font-size: 12px; font-weight: 800; }
+    h1, h2, h3 { margin: 0; line-height: 1.08; letter-spacing: -.035em; }
+    h1 { margin-top: 22px; font-size: clamp(48px, 6.2vw, 84px); max-width: 850px; }
+    .hero-lead { max-width: 760px; margin: 28px 0 0; font-size: clamp(18px, 2vw, 23px); color: rgba(255,255,255,.72); }
+    .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 38px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 24px; border-radius: 999px; font-weight: 750; transition: .2s ease; }
+    .btn-primary { background: var(--gold); color: var(--ink); }
+    .btn-primary:hover { transform: translateY(-2px); background: #cfad70; }
+    .btn-ghost { border: 1px solid rgba(255,255,255,.22); color: #fff; }
+    .btn-ghost:hover { background: rgba(255,255,255,.08); }
+
+    .profile-card {
+      padding: 34px;
+      border-radius: 34px;
+      border: 1px solid rgba(255,255,255,.11);
+      background: rgba(255,255,255,.07);
+      box-shadow: 0 30px 80px rgba(0,0,0,.22);
+    }
+    .profile-name { color: var(--gold-soft); font-size: 12px; text-transform: uppercase; letter-spacing: .2em; font-weight: 800; }
+    .profile-card h2 { margin-top: 14px; font-size: 30px; }
+    .profile-card p { color: rgba(255,255,255,.7); }
+    .mini-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 26px; }
+    .mini-stat { padding: 20px; border-radius: 20px; background: rgba(255,255,255,.08); }
+    .mini-stat strong { display: block; color: var(--gold-soft); font-size: 25px; }
+    .mini-stat span { display: block; margin-top: 6px; font-size: 13px; color: rgba(255,255,255,.68); }
+
+    section { padding: 100px 0; }
+    .kicker { color: #8c6b32; text-transform: uppercase; letter-spacing: .19em; font-size: 12px; font-weight: 800; }
+    .section-title { margin-top: 14px; font-size: clamp(38px, 4.6vw, 62px); max-width: 920px; }
+    .section-lead { margin-top: 22px; color: var(--muted); font-size: 19px; max-width: 850px; }
+
+    .value-grid { margin-top: 52px; display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+    .value-card { min-height: 235px; padding: 28px; border-radius: var(--radius); color: #fff; background: var(--ink); }
+    .value-card strong { display: block; color: var(--gold-soft); font-size: clamp(28px, 3vw, 40px); line-height: 1.05; }
+    .value-card p { margin: 18px 0 0; color: rgba(255,255,255,.67); font-size: 14px; }
+
+    .white { background: var(--white); }
+    .services { margin-top: 48px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .service { padding: 30px; border-radius: var(--radius); background: var(--paper); border: 1px solid #ece6dc; }
+    .service-num { color: var(--gold); font-size: 12px; font-weight: 800; letter-spacing: .15em; }
+    .service h3 { margin-top: 16px; font-size: 25px; }
+    .service p { margin: 14px 0 0; color: var(--muted); }
+
+    .fit { background: #ebe4d8; }
+    .fit-grid { margin-top: 46px; display: grid; grid-template-columns: repeat(2,1fr); gap: 16px 44px; }
+    .fit-item { display: flex; gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(23,26,32,.12); font-size: 18px; }
+    .check { color: var(--sage); font-weight: 900; }
+
+    .diagnostic-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 70px; align-items: start; }
+    .steps { display: grid; gap: 12px; }
+    .step { display: grid; grid-template-columns: 50px 1fr; gap: 18px; padding: 22px; border-radius: 22px; background: var(--white); box-shadow: 0 10px 30px rgba(34,30,25,.05); }
+    .step-no { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; background: var(--ink); color: var(--gold-soft); font-weight: 800; }
+    .step h3 { font-size: 19px; }
+    .step p { margin: 7px 0 0; color: var(--muted); font-size: 14px; }
+
+    .result-wrap { padding: 54px; border-radius: 36px; background: var(--ink); color: #fff; }
+    .result-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 60px; }
+    .result-wrap h2 { font-size: clamp(38px, 4.7vw, 60px); }
+    .result-list { display: grid; gap: 22px; }
+    .result-item { padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,.12); }
+    .result-item strong { color: var(--gold-soft); font-size: 18px; }
+    .result-item p { margin: 6px 0 0; color: rgba(255,255,255,.7); }
+
+    .about-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: 70px; align-items: start; }
+    .about-aside { position: sticky; top: 105px; padding: 28px; border-radius: var(--radius); background: var(--sage); color: #fff; }
+    .about-aside strong { display: block; color: var(--gold-soft); font-size: 32px; }
+    .about-aside p { color: rgba(255,255,255,.77); }
+    .about-points { display: grid; gap: 28px; }
+    .about-point { padding-bottom: 26px; border-bottom: 1px solid var(--line); }
+    .about-point h3 { font-size: 23px; }
+    .about-point p { margin: 10px 0 0; color: var(--muted); }
+
+    .contact { padding: 90px 0; background: var(--white); text-align: center; }
+    .contact h2 { margin: 12px auto 0; max-width: 780px; font-size: clamp(40px, 5vw, 64px); }
+    .contact p { max-width: 720px; margin: 20px auto 0; color: var(--muted); font-size: 18px; }
+    .contact-links { margin-top: 34px; display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
+    .contact .btn-ghost { color: var(--ink); border-color: var(--ink); }
+    footer { padding: 28px 0; color: #999; background: var(--ink); font-size: 13px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; }
+
+    @media (max-width: 900px) {
+      .nav-links a:not(.nav-cta) { display: none; }
+      .hero { min-height: auto; }
+      .hero-grid, .diagnostic-grid, .result-grid, .about-grid { grid-template-columns: 1fr; }
+      .profile-card { max-width: 620px; }
+      .value-grid { grid-template-columns: repeat(2,1fr); }
+      .about-aside { position: static; }
+    }
+    @media (max-width: 620px) {
+      .container { width: min(100% - 28px, 1180px); }
+      section { padding: 74px 0; }
+      .nav-inner { height: 64px; }
+      .nav-cta { padding: 9px 13px; font-size: 13px; }
+      .hero { padding-top: 115px; }
+      .hero-grid { gap: 44px; }
+      .mini-stats, .value-grid, .services, .fit-grid { grid-template-columns: 1fr; }
+      .result-wrap { padding: 32px 24px; }
+      .footer-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">Татьяна Антипова <span>/ CFO</span></a>
+      <div class="nav-links">
+        <a href="#services">Услуги</a>
+        <a href="#diagnostic">Диагностика</a>
+        <a href="#about">Обо мне</a>
+        <a class="nav-cta" href="#contact">Обсудить задачу</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Внешний финансовый директор</div>
+        <h1>Финансовая система, которая показывает реальную экономику бизнеса</h1>
+        <p class="hero-lead">Помогаю собственникам видеть прибыль, денежный поток, риски и эффективность активов. Выстраиваю управленческий учет, бюджетирование и финансовый контроль без необходимости создавать отдельную штатную CFO-функцию.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#contact">Обсудить задачу</a>
+          <a class="btn btn-ghost" href="#services">Что входит в работу</a>
+        </div>
+      </div>
+      <aside class="profile-card">
+        <div class="profile-name">Татьяна Антипова</div>
+        <h2>CFO | финансы, активы, недвижимость</h2>
+        <p>20 лет общего опыта. Финансовое управление в коммерческой недвижимости и холдинговых структурах. Работа с бизнесом с оборотом свыше 500 млн и 1 млрд рублей.</p>
+        <div class="mini-stats">
+          <div class="mini-stat"><strong>3+ млрд ₽</strong><span>рост капитализации группы компаний</span></div>
+          <div class="mini-stat"><strong>5%+ в год</strong><span>рост арендного дохода 6 лет подряд</span></div>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      <div class="kicker">Подход</div>
+      <h2 class="section-title">Не отчетность ради отчетности. Финансы как инструмент управления.</h2>
+      <p class="section-lead">Моя задача - дать собственнику понятную финансовую картину: где бизнес зарабатывает, куда уходит денежный поток, какие активы эффективны и где находятся риски.</p>
+      <div class="value-grid">
+        <article class="value-card"><strong>20 лет</strong><p>общий опыт в финансах и финансовом управлении</p></article>
+        <article class="value-card"><strong>500 млн - 1+ млрд ₽</strong><p>масштаб бизнеса, в котором получен управленческий финансовый опыт</p></article>
+        <article class="value-card"><strong>3+ млрд ₽</strong><p>рост капитализации группы компаний за счет структурирования активов и налоговой оптимизации</p></article>
+        <article class="value-card"><strong>5%+ ежегодно</strong><p>рост арендного дохода на протяжении 6 лет, включая работу с исторически вакантными площадями</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="white" id="services">
+    <div class="container">
+      <div class="kicker">Услуги</div>
+      <h2 class="section-title">Что я беру на себя как внешний CFO</h2>
+      <p class="section-lead">Я не заменяю бухгалтерию. Моя зона ответственности - управленческие финансы и решения для собственника.</p>
+      <div class="services">
+        <article class="service"><div class="service-num">01</div><h3>Управленческий учет и отчетность</h3><p>БДР / P&L, БДДС / Cash Flow, rolling forecast, план-факт анализ и регулярная управленческая отчетность.</p></article>
+        <article class="service"><div class="service-num">02</div><h3>Финансовый контроль</h3><p>Платежи, дебиторская задолженность, финансовые и договорные риски, рекомендации по отклонениям.</p></article>
+        <article class="service"><div class="service-num">03</div><h3>Активы и недвижимость</h3><p>Доходность активов, анализ арендаторов, коммерческие условия аренды, вакантность и структура владения.</p></article>
+        <article class="service"><div class="service-num">04</div><h3>Сделки, финансирование и налоги</h3><p>Финансовый и налоговый анализ сделок, M&A, варианты финансирования и оценка влияния решений на группу компаний.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="fit">
+    <div class="container">
+      <div class="kicker">Для кого</div>
+      <h2 class="section-title">Когда внешний CFO особенно полезен</h2>
+      <div class="fit-grid">
+        <div class="fit-item"><span class="check">✓</span><span>есть бухгалтерия, но нет целостной управленческой финансовой картины</span></div>
+        <div class="fit-item"><span class="check">✓</span><span>собственнику нужен прогноз cash flow и контроль бюджета</span></div>
+        <div class="fit-item"><span class="check">✓</span><span>несколько юридических лиц, направлений бизнеса или объектов</span></div>
+        <div class="fit-item"><span class="check">✓</span><span>планируется рост, инвестиционный проект, сделка или реструктуризация</span></div>
+        <div class="fit-item"><span class="check">✓</span><span>бизнес связан с недвижимостью или существенными активами</span></div>
+        <div class="fit-item"><span class="check">✓</span><span>нужен CFO-level взгляд без создания полной штатной финансовой функции</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="diagnostic">
+    <div class="container diagnostic-grid">
+      <div>
+        <div class="kicker">Стартовый формат</div>
+        <h2 class="section-title">Финансовая диагностика бизнеса</h2>
+        <p class="section-lead">Сначала определяем, где финансовая система теряет управляемость. После этого можно переходить к внедрению и регулярному сопровождению.</p>
+      </div>
+      <div class="steps">
+        <article class="step"><div class="step-no">1</div><div><h3>Экспресс-аудит</h3><p>Цели собственника, текущая отчетность, денежные потоки и ключевые ограничения.</p></div></article>
+        <article class="step"><div class="step-no">2</div><div><h3>Финансовая карта</h3><p>Прибыльность, cash flow, дебиторка, активы, сделки и зоны риска.</p></div></article>
+        <article class="step"><div class="step-no">3</div><div><h3>Приоритеты</h3><p>Какие изменения дадут бизнесу наибольший эффект в первую очередь.</p></div></article>
+        <article class="step"><div class="step-no">4</div><div><h3>План внедрения</h3><p>Отчетность, бюджет, KPI, регламенты, контроль и формат дальнейшего сопровождения.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container result-wrap">
+      <div class="result-grid">
+        <div>
+          <div class="eyebrow">Результат для собственника</div>
+          <h2 style="margin-top:16px">Перестать управлять финансами вслепую</h2>
+        </div>
+        <div class="result-list">
+          <div class="result-item"><strong>Прозрачность</strong><p>Единая картина прибыли, cash flow и ключевых отклонений.</p></div>
+          <div class="result-item"><strong>Прогноз</strong><p>Понимание потребности в деньгах до возникновения кассового разрыва.</p></div>
+          <div class="result-item"><strong>Контроль</strong><p>Бюджет, платежи, дебиторка и финансовые риски в одной системе.</p></div>
+          <div class="result-item"><strong>Решения</strong><p>Цифры для оценки активов, инвестиций, арендаторов и сделок.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="white" id="about">
+    <div class="container about-grid">
+      <aside class="about-aside">
+        <div class="profile-name">Профессиональный профиль</div>
+        <strong>20 лет</strong>
+        <p>в финансах, управлении активами и коммерческой недвижимости</p>
+      </aside>
+      <div class="about-points">
+        <div><div class="kicker">Обо мне</div><h2 class="section-title">CFO, который соединяет цифры с экономикой бизнеса</h2></div>
+        <article class="about-point"><h3>CFO и холдинговый опыт</h3><p>Финансовый директор, заместитель директора по экономике и финансам, руководство финансово-аналитической функцией.</p></article>
+        <article class="about-point"><h3>Недвижимость и активы</h3><p>Управление коммерческой недвижимостью, анализ арендаторов, структурирование владения активами, работа с финансовой эффективностью объектов.</p></article>
+        <article class="about-point"><h3>Сильная техническая база</h3><p>Бюджетирование, МСФО, M&A, налоговое планирование, финансовый анализ, риск-менеджмент и договорная работа.</p></article>
+        <article class="about-point"><h3>Современные инструменты</h3><p>Применяю AI-инструменты в финансовом моделировании, прогнозировании и автоматизации отчетности.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="kicker">Контакт</div>
+      <h2>Обсудим финансовую задачу вашего бизнеса</h2>
+      <p>Первая встреча нужна, чтобы понять масштаб бизнеса, текущую финансовую систему и определить, где внешний CFO может дать измеримый эффект.</p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:1093850@gmail.com">1093850@gmail.com</a>
+        <a class="btn btn-ghost" href="tel:+79164256055">+7 (916) 425-60-55</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-inner"><span>© 2026 Татьяна Антипова</span><span>Внешний финансовый директор | финансы, активы, недвижимость</span></div>
+  </footer>
+</body>
+</html>
