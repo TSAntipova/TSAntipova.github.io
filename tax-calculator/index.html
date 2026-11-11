@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Налоговый калькулятор</title>
+<style>
+:root{font-family:Inter,system-ui,sans-serif;color:#172337;background:#f4f6fa;--blue:#254bd8;--muted:#58677d;--line:#dfe5ef;--soft:#edf1ff}
+*{box-sizing:border-box}body{margin:0}header{background:white;border-bottom:1px solid var(--line)}.shell{max-width:1240px;margin:auto;padding:0 28px}.top{height:68px;display:flex;align-items:center;justify-content:space-between;font-weight:650}.brand{display:flex;align-items:center;gap:12px}.icon{background:var(--blue);color:#fff;border-radius:10px;width:35px;height:35px;display:grid;place-items:center;font-size:20px}.muted,small{color:var(--muted)}main{padding-bottom:48px!important}.intro{padding:35px 0 25px}h1{font-size:clamp(30px,4.5vw,48px);letter-spacing:-.055em;margin:0 0 9px;line-height:1.08}p{line-height:1.55;margin:8px 0}h2{font-size:21px;letter-spacing:-.025em;margin:0 0 14px}h3{font-size:15px;margin:20px 0 10px}.layout{display:grid;grid-template-columns:minmax(300px,370px) minmax(0,1fr);gap:20px;align-items:start}.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:22px}.results{display:grid;gap:16px}.toolbar{display:flex;justify-content:space-between;align-items:baseline;gap:10px}.link{background:none;color:var(--blue);border:0;padding:0;font-weight:650;cursor:pointer}button,input,select{font:inherit}button,summary{cursor:pointer}input,select{width:100%;padding:10px 11px;border:1px solid #c9d2e1;background:#fff;color:#172337;border-radius:8px;min-height:42px}input:focus,select:focus,button:focus-visible,summary:focus-visible{outline:2px solid var(--blue);outline-offset:2px}label{display:block;font-size:13px;font-weight:620;margin:10px 0}.field{display:block;position:relative;margin-top:5px}.suffix{position:absolute;right:11px;top:11px;color:var(--muted);pointer-events:none}.suffix~input,.field input{padding-right:32px}.pair{display:grid;grid-template-columns:1.5fr 1fr;gap:9px}.primary{background:var(--blue);color:white;border:0;border-radius:9px;width:100%;font-weight:650;padding:13px;margin-top:14px}.primary:disabled{opacity:.65}summary{font-size:14px;font-weight:650;padding:9px 0}details{border-top:1px solid var(--line);margin-top:10px}.months{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.hero{background:var(--soft);border-color:#d8e0ff}.hero strong{display:block;font-size:clamp(25px,5vw,44px);letter-spacing:-.05em;margin:5px 0;color:#19349a}.hero p{margin-bottom:0}.chartrow{display:grid;grid-template-columns:minmax(120px,1.35fr) minmax(70px,1fr) auto;align-items:center;gap:10px;margin:11px 0;font-size:13px}.bar{height:10px;background:#eff2f7;border-radius:4px;position:relative}.axis{position:absolute;top:-2px;bottom:-2px;width:1px;background:#7989a4}.fill{position:absolute;top:0;height:100%;background:#8da1ef;border-radius:4px}.leader .fill{background:var(--blue)}.loss .fill{background:#a85065}.number{font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}.scenario summary{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}.scenario small{display:block;margin-top:4px;font-weight:400}.scenario strong{font-size:14px}.status{font-size:12px;color:var(--muted)}table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}th,td{padding:7px 4px;border-bottom:1px solid var(--line)}th{text-align:left}td{text-align:right}tr:last-child{font-weight:700}#message{color:#a22643}a{color:#2443ad}footer{padding-top:18px;font-size:12px;color:var(--muted)}
+@media(max-width:770px){.layout{grid-template-columns:1fr}.shell{padding:0 15px}.panel{padding:17px}.intro{padding-top:26px}.chartrow{grid-template-columns:minmax(110px,1fr) minmax(40px,.65fr) auto;font-size:12px}}
+</style></head>
+<body><header><div class="shell top"><span class="brand"><span class="icon" aria-hidden="true">₽</span> Налоги бизнеса</span><span class="muted" id="year">2026</span></div></header>
+<main class="shell"><div class="intro"><h1>Сравнение налоговых режимов</h1><p class="muted">Посмотрите, сколько прибыли останется у бизнеса за год при одинаковой цене для покупателей.</p></div>
+<div class="layout">
+<form class="panel" id="form"><div class="toolbar"><h2>Данные бизнеса</h2><button type="button" class="link" id="example">Загрузить пример</button></div>
+<label>Организационная форма<select name="form"><option value="ip">ИП</option><option value="ooo">ООО</option></select></label>
+<label>Годовая выручка<span class="field"><span class="suffix">₽</span><input required inputmode="decimal" name="revenue"></span></label>
+<small>Вся сумма, которую платят покупатели, включая НДС, если он есть.</small>
+<h3>Годовые расходы</h3>
+<div class="pair"><label>Переменные<span class="field"><span class="suffix">₽</span><input required name="variable" inputmode="decimal"></span></label><label>Доля с НДС<span class="field"><span class="suffix">%</span><input required name="variableVat" inputmode="decimal"></span></label></div>
+<div class="pair"><label>Постоянные<span class="field"><span class="suffix">₽</span><input required name="fixed" inputmode="decimal"></span></label><label>Доля с НДС<span class="field"><span class="suffix">%</span><input required name="fixedVat" inputmode="decimal"></span></label></div>
+<label>Взносы за сотрудников<span class="field"><span class="suffix">₽</span><input required name="workers" inputmode="decimal"></span></label>
+<small>Укажите отдельно от переменных и постоянных расходов.</small>
+<details id="eligibility"><summary>Условия применения режимов</summary>
+<label>Доход за прошлый год, ₽<input name="prior" inputmode="decimal"></label>
+<label>Число сотрудников<input name="staff" inputmode="numeric"></label>
+<label>Право на УСН<select name="usn"><option value="unknown">Нужно проверить</option><option value="yes">Условия выполнены</option><option value="no">Условия не выполнены</option></select></label>
+<label>Право на АУСН в вашем регионе<select name="ausn"><option value="unknown">Нужно проверить</option><option value="yes">Условия выполнены</option><option value="no">Условия не выполнены</option></select></label>
+<label>Освобождение от НДС на ОСНО<select name="osnoExempt"><option value="unknown">Нужно проверить</option><option value="no">Освобождения нет</option><option value="yes">Есть освобождение</option></select></label>
+<small><a href="https://www.nalog.gov.ru/rn77/service/mp/" target="_blank" rel="noopener">Проверить условия на сайте ФНС</a></small>
+</details>
+<details><summary>Помесячная выручка и вычет НДС</summary><small>Заполните 12 месяцев, если нужно оценить смену ставки. Введите 0 для месяцев без выручки.</small><div class="months" id="months"></div>
+<label>Входной НДС к вычету, ₽<input name="credit" inputmode="decimal"></label><small>Если поле пустое, оценка строится по долям покупок с НДС по стандартной ставке.</small></details>
+<button class="primary" id="submit">Сравнить режимы</button><p id="message" role="alert"></p>
+</form>
+<section class="results" id="results" aria-live="polite" tabindex="-1">
+<div class="panel hero"><span>Чистая прибыль за год</span><strong>Введите показатели</strong><p class="muted">Или загрузите пример, чтобы увидеть сравнение.</p></div></section></div>
+<footer>Плановый расчёт по базовым ставкам. Региональные льготы, специальные операции и ограничения перехода требуют отдельной проверки. АУСН рассчитана по годовым суммам как приближение к помесячному расчёту. <a href="https://www.nalog.gov.ru/new2026/" target="_blank" rel="noopener">Правила ФНС на 2026 год</a></footer>
+</main>
+<script type="module">
+import worker from "./worker.mjs";
+const parameters = fetch("./parameters.json").then(response=>{if(!response.ok)throw Error("Не удалось загрузить параметры расчёта.");return response.text()});
+const form=document.querySelector('#form');
+const result=document.querySelector('#results');
+const button=document.querySelector('#submit');
+const msg=document.querySelector('#message');
+const money=new Intl.NumberFormat('ru-RU',{maximumFractionDigits:0});
+const rub=n=>money.format(n)+' ₽';
+const number=(s)=>s.trim()===''?null:Number(s.replace(/\s/g,'').replace(',','.'));
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const monthNames=['Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг','Сен','Окт','Ноя','Дек'];
+document.querySelector('#months').innerHTML=monthNames.map((m,i)=>'<label>'+m+'<input name="month'+i+'" inputmode="decimal"></label>').join('');
+form.querySelectorAll('input').forEach(input=>input.addEventListener('blur',()=>{
+ const n=number(input.value);
+ if(n!==null&&Number.isFinite(n)) input.value=new Intl.NumberFormat('ru-RU',{maximumFractionDigits:2}).format(n);
+}));
+function render(payload,revenue){
+ document.querySelector('#year').textContent=payload.year;
+ const ordered=[...payload.rows].sort((a,b)=>b.profit-a.profit);
+ const available=ordered.filter(row=>row.status==='available');
+ const first=available[0];
+ const best=first?available.filter(row=>Math.round(row.profit)===Math.round(first.profit)):[];
+ const second=available[best.length];
+ const lo=Math.min(0,...available.map(r=>r.profit)),hi=Math.max(0,...available.map(r=>r.profit));
+ const pos=n=>100*(n-lo)/(hi-lo||1);
+ const zero=pos(0);
+ const overview=first?
+ '<span>Максимальная чистая прибыль · '+payload.year+'</span><strong>'+rub(first.profit)+'</strong><p>'+best.map(r=>esc(r.name+' · '+r.label)).join('<br>')+'</p>'+
+ (second?'<p class="muted">На '+rub(first.profit-second.profit)+' больше следующего доступного варианта</p>':''):
+ '<span>Сравнение за '+payload.year+' год</span><strong>Уточните условия</strong><p>Проверьте статусы сценариев ниже.</p>';
+ const chart=available.map(r=>{
+ const at=pos(r.profit);
+ return '<div class="chartrow '+(best.includes(r)?'leader ':'')+(r.profit<0?'loss':'')+'"><div>'+esc(r.name)+'<br><small>'+esc(r.label)+'</small></div><div class="bar" aria-hidden="true"><span class="axis" style="left:'+zero+'%"></span><span class="fill" style="left:'+Math.min(zero,at)+'%;width:'+Math.abs(at-zero)+'%"></span></div><strong class="number">'+rub(r.profit)+'</strong></div>';
+ }).join('');
+ const list=[...available,...payload.rows.filter(r=>r.status!=='available')].map(r=>{
+ const status=r.status==='available'?'<strong class="number">'+rub(r.profit)+'</strong>':'<span class="status">'+(r.status==='unknown'?'Нужно уточнить':'Недоступно')+'</span>';
+ const lines=r.details.map(([name,n])=>'<tr><td style="text-align:left">'+esc(name)+'</td><td class="number">'+rub(n)+'</td><td class="number">'+(revenue?(100*n/revenue).toLocaleString('ru-RU',{maximumFractionDigits:1})+'%':'—')+'</td></tr>').join('');
+ const detail=r.status==='unavailable'?'':'<table><thead><tr><th>Показатель</th><th class="number">Сумма</th><th class="number">Доля</th></tr></thead><tbody>'+lines+'</tbody></table>';
+ return '<details class="scenario"><summary><span>'+esc(r.name)+'<small>'+esc(r.label)+(best.includes(r)?' · Максимум':'')+'</small></span>'+status+'</summary>'+
+ (r.reason?'<p class="muted">'+esc(r.reason)+(r.status==='unknown'?' · Расчёт предварительный':'')+'</p>':'')+detail+'</details>';
+ }).join('');
+ result.innerHTML='<div class="panel hero">'+overview+'</div>'+(chart?'<div class="panel"><h2>Чистая прибыль по режимам</h2>'+chart+'</div>':'')+'<div class="panel"><h2>Все сценарии и расчёт</h2>'+list+'</div>';
+}
+form.addEventListener('submit',async event=>{
+ event.preventDefault();msg.textContent='';
+ const f=new FormData(form);
+ const data={ip:f.get('form')==='ip'};
+ for(const key of ['revenue','variable','fixed','variableVat','fixedVat','workers','prior','staff','credit']) data[key]=number(f.get(key));
+ for(const key of ['usn','ausn','osnoExempt']) data[key]=f.get(key);
+ const months=monthNames.map((_,i)=>number(f.get('month'+i)));
+ data.months=months.every(n=>n===null)?[]:months;
+ const invalid=Object.values(data).some(n=>typeof n==='number'&&(!Number.isFinite(n)||n<0));
+ if(invalid||data.variableVat>100||data.fixedVat>100||(data.staff!==null&&!Number.isInteger(data.staff))||data.months.some(n=>n===null||!Number.isFinite(n)||n<0)){
+ msg.textContent='Проверьте суммы, доли от 0 до 100% и численность сотрудников.';return;
+ }
+ button.disabled=true;
+ try{
+ const response=await worker.fetch(new Request(new URL('calculate',location.href),{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(data)}),{TAX_PARAMETERS:await parameters});
+ const payload=await response.json();
+ if(!response.ok) throw Error(payload.error);
+ render(payload,data.revenue);
+ if(matchMedia('(max-width:770px)').matches)result.focus();
+ }catch(error){msg.textContent=error.message||'Не удалось выполнить расчёт.'}
+ finally{button.disabled=false}
+});
+document.querySelector('#example').addEventListener('click',()=>{
+ form.reset();
+ const example={form:'ooo',revenue:'36 000 000',variable:'18 000 000',variableVat:80,fixed:'6 000 000',fixedVat:50,workers:'900 000',prior:'30 000 000',staff:8,usn:'yes',ausn:'no',osnoExempt:'no'};
+ for(const [key,value] of Object.entries(example)) form.elements.namedItem(key).value=value;
+ form.requestSubmit();
+});
+</script></body></html>
