@@ -1,0 +1,45 @@
+{
+  "year": 2026,
+  "exemption": 20000000,
+  "vatTier": 272500000,
+  "usnLimit": 490500000,
+  "ausnLimit": 60000000,
+  "low": 0.05,
+  "high": 0.07,
+  "vat": 0.22,
+  "usnIncome": 0.06,
+  "usnProfit": 0.15,
+  "usnMin": 0.01,
+  "ausnIncome": 0.08,
+  "ausnProfit": 0.2,
+  "ausnMin": 0.03,
+  "corporate": 0.25,
+  "deduction": 0.5,
+  "fixed": 57390,
+  "extraThreshold": 300000,
+  "extraRate": 0.01,
+  "extraMax": 321818,
+  "injury": 2959,
+  "brackets": [
+    [
+      2400000,
+      0.13
+    ],
+    [
+      5000000,
+      0.15
+    ],
+    [
+      20000000,
+      0.18
+    ],
+    [
+      50000000,
+      0.2
+    ],
+    [
+      null,
+      0.22
+    ]
+  ]
+}
